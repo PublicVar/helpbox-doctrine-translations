@@ -13,11 +13,12 @@ class ArticleRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('a')
             ->getQuery()
-        ;
-       $query->setHint(
+            ;
+        //prevent executing a query for every translated field
+        $query->setHint(
             \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
         );
-        
+
         return $query->getResult();
     }
 
