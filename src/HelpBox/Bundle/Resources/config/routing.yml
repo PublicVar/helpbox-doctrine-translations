@@ -1,0 +1,3 @@
+help_box_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: HelpBoxBundle:Default:index }

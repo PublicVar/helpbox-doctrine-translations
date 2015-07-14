@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    
+    <a href="{{ path('helpbox_doctrine_translations', {'_locale':'fr'}) }}">fr</a> |  <a href="{{ path('helpbox_doctrine_translations', {'_locale':'en'}) }}">en</a> 
+    |  <a href="{{ path('helpbox_doctrine_translations', {'_locale':'de'}) }}">de</a>
+<h1>Doctrine Translations</h1>
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.title) }}
+
+{{ form_end(form) }}
+
+{% endblock %}

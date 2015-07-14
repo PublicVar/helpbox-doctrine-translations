@@ -1,3 +1,8 @@
+help_box:
+    resource: "@HelpBoxBundle/Controller/"
+    type: annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
