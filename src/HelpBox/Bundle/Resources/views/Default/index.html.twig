@@ -4,11 +4,19 @@
     <a href="{{ path('helpbox_doctrine_translations', {'_locale':'fr'}) }}">fr</a> |  <a href="{{ path('helpbox_doctrine_translations', {'_locale':'en'}) }}">en</a> 
     |  <a href="{{ path('helpbox_doctrine_translations', {'_locale':'de'}) }}">de</a>
 <h1>Doctrine Translations</h1>
-
+<p>Simple field translation</p>
 {{ form_start(form) }}
     {{ form_errors(form) }}
 
     {{ form_row(form.title) }}
+
+{{ form_end(form) }}
+<hr>
+<p>Entity field translation</p>
+{{ form_start(formCategorie) }}
+    {{ form_errors(formCategorie) }}
+
+    {{ form_row(formCategorie.article) }}
 
 {{ form_end(form) }}
 

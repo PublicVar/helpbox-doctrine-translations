@@ -28,7 +28,7 @@ class Article implements Translatable
     private $content;
     
     /**
-     * @Orm\ManyToOne(targetEntity="Categorie", inversedBy="articles",cascade={"persist"})
+     * @Orm\ManyToOne(targetEntity="Categorie", inversedBy="articles")
      */
     private $categorie;
     
@@ -68,33 +68,5 @@ class Article implements Translatable
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
-    }
-
-    /**
-     * Set categorie
-     *
-     * @param \HelpBox\Bundle\Entity\Categorie $categorie
-     * @return Article
-     */
-    public function setCategorie(\HelpBox\Bundle\Entity\Categorie $categorie = null)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return \HelpBox\Bundle\Entity\Categorie 
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-    
-    public function __toString()
-    {
-        return $this->title;
     }
 }

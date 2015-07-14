@@ -15,22 +15,38 @@ class DefaultController extends Controller
     public function doctrineTranslationAction()
     {
         $articleRepo = $this->getDoctrine()->getManager()->getRepository('HelpBoxBundle:Article');
-        
+
         $articles = $articleRepo->findAll();
-        
+
         // List all titles
         $titles = [];
-        foreach($articles as $article){
+        foreach ($articles as $article) {
             $titles[] = $article->getTitle();
         }
 
         //create a form listing only the titles
-        $form = $this->createFormBuilder($articles)
-            ->add('title', 'choice',array('choices'=>$titles))
+        $form = $this->createFormBuilder()
+            ->add('title', 'choice', array('choices' => $titles))
             ->getForm()
         ;
 
-        return $this->render('HelpBoxBundle:Default:index.html.twig',array('form'=>$form->createView()));
+
+        $categorieRepo = $this->getDoctrine()->getManager()->getRepository('HelpBoxBundle:Categorie');
+
+        $categorie = $categorieRepo->findAll();
+
+        $formCategorie = $this->createFormBuilder()
+            ->add('article', 'entity', array(
+              'class' => 'HelpBoxBundle:Article',
+            ))
+            ->getForm()
+        ;
+
+
+        return $this->render('HelpBoxBundle:Default:index.html.twig', array(
+          'form' => $form->createView(),
+          'formCategorie'=> $formCategorie->createView(),
+            ));
     }
 
 }
